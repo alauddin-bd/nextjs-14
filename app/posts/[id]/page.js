@@ -1,6 +1,19 @@
 import { getPost } from '@/app/lib/postApi'
 import React from 'react'
 
+export const generateMetadata = async ({params}) => {
+  const {id} = params; 
+  const post = await getPost(id);
+  const {title, body} = post;
+  return {
+    title: title,
+    description: body
+  }
+
+}
+
+
+
 const PostPage = async({params}) => {
   const {id} = params; 
   const post = await getPost(id);
