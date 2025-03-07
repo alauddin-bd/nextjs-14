@@ -16,5 +16,13 @@ const getPost = async(id) => {
   return result.json();
 }
 
+const getPostComments = async (id) => {
+  const result = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`);
+  if(!result.ok) {
+    throw new Error("There was an error while fetching comments");
+  }
+  return result.json();
+}
 
-export {getAllPosts, getPost}
+
+export {getAllPosts, getPost, getPostComments}
